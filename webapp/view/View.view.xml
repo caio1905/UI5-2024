@@ -1,0 +1,111 @@
+<mvc:View 
+    controllerName="ui5treinamento.controller.View"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:core="sap.ui.core"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    <Page id="page" title="{i18n>title}" showHeader="false">
+        <content>
+            <smartFilterBar:SmartFilterBar  
+                width="100%"
+                id="smfb1"
+                persistencyKey="UniqueAndStablePersistencyKey"
+                entitySet="HeaderSet"
+                showClearOnFB="true">
+
+                <smartFilterBar:controlConfiguration>
+
+                    <smartFilterBar:ControlConfiguration 
+                        id="ftErdat"
+                        label="{i18n>Erdat}"
+                        key="Erdat"
+                        visibleInAdvancedArea="true" >
+                    </smartFilterBar:ControlConfiguration>
+
+                    <smartFilterBar:ControlConfiguration
+                        id="ftErnam"
+                        label="{i18n>Ernam}"
+                        key="Ernam"
+                        visibleInAdvancedArea="true" >
+                    </smartFilterBar:ControlConfiguration>
+
+                    <smartFilterBar:ControlConfiguration
+                        id="ftWaerk"
+                        label="{i18n>Waerk}"
+                        key="Waerk"
+                        visibleInAdvancedArea="true">
+                    </smartFilterBar:ControlConfiguration>
+
+                </smartFilterBar:controlConfiguration>
+
+            </smartFilterBar:SmartFilterBar>
+            <smartTable:SmartTable
+                id="stHeader"
+                entitySet="HeaderSet"
+                smartFilterId="smfb1"
+                tableType="Table"
+                enableExport="true"
+                initiallyVisibleFields="Vbeln,Erdat,Erzet,Ernam,Netwr,Waerk"
+                enableAutoBinding="true">
+                <Table 
+                    growing="true"
+                    id="cTable"
+                    mode="None">
+                    <columns>
+                        <Column >
+                            <customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey":"Vbeln", "columnIndex":"1", "leadingProperty":"Vbeln"}'/>
+                            </customData>
+                            <Text wrapping="true" text="{i18n>Vbeln}"/>
+                        </Column>
+                        <Column >
+                            <customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey":"Erdat", "columnIndex":"2", "leadingProperty":"Erdat"}'/>
+                            </customData>
+                            <Text wrapping="true" text="{i18n>Erdat}"/>
+                        </Column>
+                        <Column >
+                            <customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey":"Erzet", "columnIndex":"3", "leadingProperty":"Erzet"}'/>
+                            </customData>
+                            <Text wrapping="true" text="{i18n>Erzet}"/>
+                        </Column>
+                        <Column >
+                            <customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey":"Ernam", "columnIndex":"4", "leadingProperty":"Ernam"}'/>
+                            </customData>
+                            <Text wrapping="true" text="{i18n>Ernam}"/>
+                        </Column>
+                        <Column >
+                            <customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey":"Netwr", "columnIndex":"5", "leadingProperty":"Netwr"}'/>
+                            </customData>
+                            <Text wrapping="true" text="{i18n>Netwr}"/>
+                        </Column>
+                        <Column >
+                            <customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey":"Waerk", "columnIndex":"6", "leadingProperty":"Waerk"}'/>
+                            </customData>
+                            <Text wrapping="true" text="{i18n>Waerk}"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Navigation" press=".onPress">
+                            <cells>
+                                <Text text="{Vbeln}" />
+                                <Text text="{Erdat}"/>
+                                <Text text="{Erzet}"/>
+                                <Text text="{Ernam}"/>
+                                <Text text="{Netwr}"/>
+                                <ObjectStatus icon="{path: 'Waerk', formatter:'.formatter.changeCurrency'}" state="{path : 'Waerk', formatter:'.formatter.changeState'}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </smartTable:SmartTable>
+
+        </content>
+    </Page>
+</mvc:View>
